@@ -1,3 +1,11 @@
-# CourseProject
+# A chrome extention that retrieves the three most related Q&As from Stack Overflow
 
-Please fork this repository and paste the github link of your fork on Microsoft CMT. Detailed instructions are on Coursera under Week 1: Course Project Overview/Week 9 Activities.
+## Documentations
+
+1. [project_proposal.pdf](https://github.com/chadyuu/QA-recommender-extension/blob/main/project_proposal.pdf)
+2. [project_progress.pdf](https://github.com/chadyuu/QA-recommender-extension/blob/main/project_progress.pdf)
+3. [documents.pd](https://github.com/chadyuu/QA-recommender-extension/blob/main/document.pdf) (overview of functions, implementation documentation, and usage documentation)
+
+## Software usage tutorial presentation
+
+WIP
