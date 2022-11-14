@@ -17,9 +17,11 @@ format:
 
 2.  Implemented a Google Chrome extension that retrieves the three most related Q&As when browsing the content on Stack Overflow.
 
+3.  Wrote documentation for the final submission.
+
 ## Remaining Tasks
 
-1.  Write documenatation.
+1.  Provide a Docker image if needed, [asking on Campuswire](https://campuswire.com/c/G984118D3/feed/1451).
 
 2.  Create a 5-min tutorial presentation.
 
@@ -31,4 +33,9 @@ format:
 
 ## Challenges/Issues being faced
 
-1.  The calculation of similarity between the current page content and each documents in the Q&A database takes much time because the number of documents is 7319. So I will try to reduce the number of Q&A documents to realize a quick response in this project.
+1.  If we provide a stable environment to run the API server for graders, we will have to provide a Docker image, but we have not defined how to implement it yet.
+
+In addition, we will show the issues we faced but overcame since we have already finished the implementation without the Docker image.
+
+1.  We had to implement a API server to provide the related Q&A articles since JavaScript could not directly execute Python codes.
+2.  We had to implement the extension to open a new tab for users to access three links to related Q&A articles because the Chrome extension has several limitations to improve user experience; the popup disappears after one click and we are not allowed to open multiple windows. Therefore, we have to open another page (i.e., `questions.html`) that displays the three links to related Q&A articles instead of showing them directly on the popup on `index.html`.
