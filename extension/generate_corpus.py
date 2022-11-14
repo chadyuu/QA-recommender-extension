@@ -7,7 +7,7 @@ import common
 
 sqliteConnection = sqlite3.connect('tis.db')
 cursor = sqliteConnection.cursor()
-cursor.execute('SELECT id, text FROM questions where text IS NOT NULL limit 10')
+cursor.execute('SELECT id, text FROM questions where text IS NOT NULL')
 links = cursor.fetchall()
 docs = []
 ids = []
