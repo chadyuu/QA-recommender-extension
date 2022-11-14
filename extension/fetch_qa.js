@@ -10,10 +10,11 @@ $.ajax({
 	},
 }).done(function (data) {
 	i = 0
+	$("#wait").empty();
 	data.forEach(question_id => {
 		if (!current_url.includes("/" + question_id + "/") & i < 3) {
 			$("#data").append("<li><a href='https://stackoverflow.com/questions/" + question_id + "/' target = '_blank'>" + question_id + "</a></li>");
-			i += 1
+			i += 1;
 		}
 	});
 });
