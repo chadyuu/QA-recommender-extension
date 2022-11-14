@@ -1,0 +1,34 @@
+---
+title: "Project Progress Report, CS 410"
+author: "Group: chadyuu"
+format:
+  pdf: 
+    toc: false
+    number-sections: true
+    colorlinks: true
+    margin-top: 20mm
+    margin-left: 20mm
+    margin-right: 20mm
+---
+
+## The progress made
+
+1.  Created the Q&A database by preprocessing Q&As from Stack Overflow that relate to text information system.
+
+2.  Implemented a Google Chrome extension that retrieves the three most related Q&As when browsing the content on Stack Overflow.
+
+## Remaining Tasks
+
+1.  Write documenatation.
+
+2.  Create a 5-min tutorial presentation.
+
+    1.  how to install the software
+
+    2.  instructions on how to use the software
+
+    3.  at least one example of use case so as to allow a grader to use the provided use case to test the software
+
+## Challenges/Issues being faced
+
+1.  The calculation of similarity between the current page content and each documents in the Q&A database takes much time because the number of documents is 7319. So I will try to reduce the number of Q&A documents to realize a quick response in this project.
