@@ -26,8 +26,8 @@ def index():
   query_doc_bow = dictionary.doc2bow(query_doc)
   query_doc_tf_idf = tf_idf[query_doc_bow]
 
-  # return the 3 most similar document index
-  top_idx = np.argsort(-sims[query_doc_tf_idf])[0:3]
+  # return the 4 most similar document index
+  top_idx = np.argsort(-sims[query_doc_tf_idf])[0:4]
   top_ids = [ids[i] for i in top_idx]
   return top_ids
 
