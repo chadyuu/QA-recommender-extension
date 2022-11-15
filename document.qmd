@@ -50,35 +50,35 @@ Specifically, we set the following keywords as queries for the API.
 
 ``` python
 keywords = [
-	 "text mining"
-	,"text retrieval"
-	,"text information"
-	,"natural language processing"
-	,"BM25"
-	,"POS tagging"
-	,"pivoted length normalization"
-	,"document frequence"
-	,"term frequence"
-	,"query likelihood"
-	,"PL2"
-	,"vector support machine"
-	,"TF-IDF"
-	,"inverse document frequency"
-	,"okapi"
-	,"search engine"
-	,"zipf's law"
-	,"f-measure"
-	,"normalized discounted culumative gain"
-	,"unigram"
-	,"dirichlet prior smoothing"
-	,"Jelinek-Mercer"
-	,"Rocchio Feedback"
-	,"Kullback-Leibler"
-	,"pagerank"
-	,"hypertext induced topic search"
-	,"content based filtering"
-	,"beta-gamma threshold learning"
-	,"collaborative filtering"
+     "text mining"
+    ,"text retrieval"
+    ,"text information"
+    ,"natural language processing"
+    ,"BM25"
+    ,"POS tagging"
+    ,"pivoted length normalization"
+    ,"document frequence"
+    ,"term frequence"
+    ,"query likelihood"
+    ,"PL2"
+    ,"vector support machine"
+    ,"TF-IDF"
+    ,"inverse document frequency"
+    ,"okapi"
+    ,"search engine"
+    ,"zipf's law"
+    ,"f-measure"
+    ,"normalized discounted culumative gain"
+    ,"unigram"
+    ,"dirichlet prior smoothing"
+    ,"Jelinek-Mercer"
+    ,"Rocchio Feedback"
+    ,"Kullback-Leibler"
+    ,"pagerank"
+    ,"hypertext induced topic search"
+    ,"content based filtering"
+    ,"beta-gamma threshold learning"
+    ,"collaborative filtering"
 ]
 ```
 
@@ -139,11 +139,45 @@ flask run
 * Running on http://127.0.0.1:5000
 ```
 
-Now we can access the server on http://127.0.0.1:5000.
+Now we can access the server on http://127.0.0.1:5000. We will explain how to run it on a Docker container afterwards.
 
 ### Calculate cosine similarity
 
 The `app.py` script also calculates the cosine similarity between the current Stack Overflow page and the Q&A corpus, using `gensim.models.TfidfModel` and `gensim.similarities.Similarity`, after loading three objects `dictionary`, `corpus`, and `ids` with `pickle`.
+
+### Run the API server on the Docker container
+
+To provide a stable environment, we built a Docker image and you can run the API server in the Docker container.
+
+First, we created `requirements.txt`, using `pipreqs`, which automatically generates it from a certain directory as follows.
+
+``` bash
+pipreqs .
+```
+
+We can install required library by the following codes in `dockerfile`.
+
+``` dockerfile
+COPY requirements.txt requirements.txt
+RUN pip3 install -r requirements.txt
+```
+
+Then, we built a Docker image from `dockerfile`.
+
+    docker build --tag qa-recommender .
+
+Here, we can run the API server in the Docker image:
+
+``` bash
+docker run -p 5000:5000 qa-recommender
+```
+
+We uploaded this Docker image to [Docker Hub](https://hub.docker.com/repository/docker/yutaronishiyama/qa-recommender).
+
+    docker tag qa-recommender yutaronishiyama/qa-recommender
+    docker push yutaronishiyama/qa-recommender:latest
+
+So you can download the image from this Docker Hub repository without building it by yourself.
 
 ## Implement the Chrome extension
 
@@ -161,18 +195,18 @@ We implemented the extension in the `extension` folder with the following files:
 
 The Chrome extension has several limitations to improve user experience; the popup disappears after one click and we are not allowed to open multiple windows. Therefore, we have to open another page (i.e., `questions.html`) that displays the three links to related Q&A articles instead of showing them directly on the popup on `index.html`.
 
-### `index.html` 
+### `index.html`
 
 This html just calls `open.js`.
 
-### `open.js` 
+### `open.js`
 
 This script opens a new tab of `questions.html` with a parameter of `current_url`. Note that we should get the current Stack Overflow URL by [the `chrome.tabs.query` API](https://developer.chrome.com/docs/extensions/reference/tabs/) because the chrome extension cannot get it directly.
 
 ``` python
 chrome.tabs.query(
-	{ active: true, lastFocusedWindow: true },
-	tabs => {
+    { active: true, lastFocusedWindow: true },
+    tabs => {
     current_url = tabs[0].url # get the current URL of Stack Overflow
     ...
 ```
@@ -181,7 +215,7 @@ chrome.tabs.query(
 
 This is a simple HTML file with `<ul id = 'data'></ul>` in the body element, which will be filled with the three links to the most related articles.
 
-### `fetch_qa.js` 
+### `fetch_qa.js`
 
 This JavaScript fetches the four most related Q&A articles from the API server running on http://127.0.0.1:5000. Note that we retrieve four articles, not three, taking into account the case where they include the same article as the current page. Then, the script appends three `li` elements of the links for the most related questions to `<ul id = 'data'></ul>`.
 
@@ -201,20 +235,28 @@ git clone https://github.com/chadyuu/QA-recommender-extension.git
 
 Here is one instance for the usage of the extension.
 
-1.  Launch the API server. TODO: docker?
+1.  Pull the Docker image from Docker Hub.
+
+``` {.bash .ash}
+docker pull yutaronishiyama/qa-recommender
+```
+
+2.  Launch the API server in the Docker container.
 
 ``` bash
 cd QA-recommender-extension/extension
-flask run
+docker run -p 5000:5000 yutaronishiyama/qa-recommender
 ```
 
-2.  Open [a page with a title "BM25 Similarity in Elasticsearch" on Stack Overflow](https://stackoverflow.com/questions/26713411/bm25-similarity-in-elasticsearch).
-3.  Click the QA recommender extension on the top-right of the Chrome browser.
-4.  You can see the following three most related Q&A articles in the opened tab.
+3.  Open [a page with a title "BM25 Similarity in Elasticsearch" on Stack Overflow](https://stackoverflow.com/questions/26713411/bm25-similarity-in-elasticsearch).
+4.  Click the QA recommender extension on the top-right of the Chrome browser.
+5.  You can see the following three most related Q&A articles in the opened tab.
     1.  [BM25 Similarity Tuning in Elasticsearch](https://stackoverflow.com/questions/27307291/bm25-similarity-tuning-in-elasticsearch)
 
     2.  [How can I configure my index to use BM25 in ElasticSearch using the JAVA API?](https://stackoverflow.com/questions/23056358/how-can-i-configure-my-index-to-use-bm25-in-elasticsearch-using-the-java-api)
 
     3.  [elasticsearch 5.0 and index template](https://stackoverflow.com/questions/40388884/elasticsearch-5-0-and-index-template)
+
+![Results page](images/paste-2D12816B.png){fig-align="center"}
 
 You can confirm that all of three articles similar to the original one. Please try this Chrome extension on other Stack Overflow articles!
