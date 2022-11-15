@@ -174,7 +174,7 @@ Here, we can run the API server in the Docker image:
 docker run -p 5000:5000 qa-recommender
 ```
 
-We uploaded this Docker image to [Docker Hub](https://hub.docker.com/repository/docker/yutaronishiyama/qa-recommender).
+We uploaded this Docker image to [Docker Hub](https://hub.docker.com/r/yutaronishiyama/qa-recommender).
 
 ``` bash
 docker tag qa-recommender yutaronishiyama/qa-recommender
