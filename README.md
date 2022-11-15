@@ -7,13 +7,9 @@
 2. [project_progress.pdf](https://github.com/chadyuu/QA-recommender-extension/blob/main/project_progress.pdf)
 3. [documents.pdf](https://github.com/chadyuu/QA-recommender-extension/blob/main/document.pdf) (overview of functions, implementation documentation, and usage documentation)
 
-## Tutorial Video
-
-[![Tutorial Video](https://img.youtube.com/vi/t2ZdW64KGf8/default.jpg)](https://youtu.be/t2ZdW64KGf8)
-
 ## Software usage tutorial presentation
 
-WIP
+[![Tutorial Video](https://img.youtube.com/vi/t2ZdW64KGf8/default.jpg)](https://youtu.be/t2ZdW64KGf8)
 
 ## How to install the Chrome extension
 
