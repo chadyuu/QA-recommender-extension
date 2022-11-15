@@ -164,7 +164,9 @@ RUN pip3 install -r requirements.txt
 
 Then, we built a Docker image from `dockerfile`.
 
-    docker build --tag qa-recommender .
+``` bash
+docker build --tag qa-recommender .
+```
 
 Here, we can run the API server in the Docker image:
 
@@ -174,8 +176,10 @@ docker run -p 5000:5000 qa-recommender
 
 We uploaded this Docker image to [Docker Hub](https://hub.docker.com/repository/docker/yutaronishiyama/qa-recommender).
 
-    docker tag qa-recommender yutaronishiyama/qa-recommender
-    docker push yutaronishiyama/qa-recommender:latest
+``` bash
+docker tag qa-recommender yutaronishiyama/qa-recommender
+docker push yutaronishiyama/qa-recommender:latest
+```
 
 So you can download the image from this Docker Hub repository without building it by yourself.
 
@@ -250,13 +254,13 @@ docker run -p 5000:5000 yutaronishiyama/qa-recommender
 
 3.  Open [a page with a title "BM25 Similarity in Elasticsearch" on Stack Overflow](https://stackoverflow.com/questions/26713411/bm25-similarity-in-elasticsearch).
 4.  Click the QA recommender extension on the top-right of the Chrome browser.
-5.  You can see the following three most related Q&A articles in the opened tab.
+5.  You can see the following three most related Q&A articles in the opened tab (see @fig-results).
     1.  [BM25 Similarity Tuning in Elasticsearch](https://stackoverflow.com/questions/27307291/bm25-similarity-tuning-in-elasticsearch)
 
     2.  [How can I configure my index to use BM25 in ElasticSearch using the JAVA API?](https://stackoverflow.com/questions/23056358/how-can-i-configure-my-index-to-use-bm25-in-elasticsearch-using-the-java-api)
 
     3.  [elasticsearch 5.0 and index template](https://stackoverflow.com/questions/40388884/elasticsearch-5-0-and-index-template)
 
-![Results page](images/paste-2D12816B.png){fig-align="center"}
+![Results page](images/paste-2D12816B.png){#fig-results fig-align="center"}
 
 You can confirm that all of three articles similar to the original one. Please try this Chrome extension on other Stack Overflow articles!
