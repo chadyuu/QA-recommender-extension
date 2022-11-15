@@ -1,10 +1,15 @@
 # A chrome extention that retrieves the three most related Q&As from Stack Overflow
 
+
 ## Documentations
 
 1. [project_proposal.pdf](https://github.com/chadyuu/QA-recommender-extension/blob/main/project_proposal.pdf)
 2. [project_progress.pdf](https://github.com/chadyuu/QA-recommender-extension/blob/main/project_progress.pdf)
 3. [documents.pdf](https://github.com/chadyuu/QA-recommender-extension/blob/main/document.pdf) (overview of functions, implementation documentation, and usage documentation)
+
+## Tutorial Video
+
+[![Tutorial Video](https://img.youtube.com/vi/t2ZdW64KGf8/default.jpg)](https://youtu.be/t2ZdW64KGf8)
 
 ## Software usage tutorial presentation
 
