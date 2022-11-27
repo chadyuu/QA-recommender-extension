@@ -11,6 +11,8 @@
 
 [![Tutorial Video](https://img.youtube.com/vi/t2ZdW64KGf8/default.jpg)](https://youtu.be/t2ZdW64KGf8)
 
+https://youtu.be/t2ZdW64KGf8
+
 ## How to install the Chrome extension
 
 1.  First, clone the repository.
